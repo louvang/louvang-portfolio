@@ -1,28 +1,19 @@
 @import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: repeat url('/images/layout/bg-light.jpg');
+  --color-light: #e6e6e6;
+  --color-dark: #3a4353;
+  --color-darker: #171515;
+  --color-light-text: #ffffff;
+  --color-dark-text: #000000;
   --font-sans: neue-haas-grotesk-display, sans-serif;
   --font-serif: ivypresto-headline, serif;
   --font-mono: cartograph-cf, monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
+  background-color: #e6e6e6;
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
@@ -38,4 +29,33 @@ body {
 
 .font-mono {
   font-family: var(--font-mono);
+}
+
+.top-nav-item {
+  border: 1px solid #e6e6e6;
+  border-radius: 3rem;
+  padding: 0.475rem 1rem 0.5rem;
+  font-weight: 700;
+}
+
+.top-nav-item:hover {
+  border: 1px solid #000;
+  transition: 0.25s;
+}
+
+.layout-footer {
+  background-color: #000;
+  color: var(--color-light-text);
+}
+
+.bottom-nav-item {
+  text-decoration: underline;
+}
+
+.bottom-nav-item:hover {
+  opacity: 0.7;
+}
+
+.bottom-nav-item:last-child {
+  margin-right: 1rem;
 }
