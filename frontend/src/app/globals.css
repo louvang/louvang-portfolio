@@ -194,3 +194,29 @@ body {
   width: 24px;
   filter: invert(100%);
 }
+
+.page-minheight {
+  height: calc(100vh - 98px - 108.5px);
+}
+
+.coming-soon__heading-row {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.coming-soon__gear-icon {
+  height: 90px;
+  margin-left: -16px;
+}
+
+.coming-soon__heading {
+  font-family: var(--font-serif);
+  font-size: 4rem;
+}
+
+.coming-soon__p {
+  max-width: 500px;
+  font-size: 1.25rem;
+}
