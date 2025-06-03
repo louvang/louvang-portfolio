@@ -41,14 +41,14 @@ export default function RootLayout({
         </header>
         <main>{children}</main>
         <footer className="layout-footer w-full">
-          <div className="px-20 py-10 flex justify-between items-center border-b text-lg">
+          <div className="px-20 py-10 flex justify-between items-center text-lg">
             <div className="copyright-line">
               &copy; 2025 Lou Vang. All rights reserved.
             </div>
             <nav className="bottom-nav">
               <ul className="list-none flex justify-between w-[280px]">
                 <li className="bottom-nav-item">
-                  <Link href="/work">Home</Link>
+                  <Link href="/">Home</Link>
                 </li>
                 <li className="bottom-nav-item">
                   <Link href="/blog">Blog</Link>

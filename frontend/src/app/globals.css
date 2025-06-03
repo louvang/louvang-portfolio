@@ -59,3 +59,70 @@ body {
 .bottom-nav-item:last-child {
   margin-right: 1rem;
 }
+
+.intro-content {
+  line-height: 120%;
+  font-size: 5.75rem;
+}
+
+.btn-fx {
+  display: inline;
+  padding: 0px 2rem;
+  border: 1px solid #000;
+  border-radius: 6rem;
+  line-height: 0px;
+}
+
+.btn-fx__mono {
+  font-size: 70px;
+  letter-spacing: -8px;
+}
+
+.btn-fx__mono-text {
+  position: relative;
+  font-size: 80px;
+  top: -5px;
+}
+
+.btn-fx__mono-icon {
+  height: 80px;
+  display: inline;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+.btn-fx__serif {
+  font-size: 80px;
+}
+
+.btn-fx__serif-text {
+  position: relative;
+  font-size: 80px;
+  top: -8px;
+}
+
+.btn-fx__serif-icon {
+  height: 60px;
+  display: inline;
+  padding-right: 6px;
+  padding-bottom: 8px;
+}
+
+.explore-link {
+  border-bottom: 3px solid #000;
+}
+
+.explore-link:hover {
+  color: var(--color-dark);
+  border-bottom: 3px solid var(--color-dark);
+}
+
+.explore-icon {
+  display: inline;
+  height: 75px;
+}
+
+.explore-link:hover .explore-icon {
+  filter: invert(23%) sepia(15%) saturate(865%) hue-rotate(180deg)
+    brightness(93%) contrast(86%);
+}
