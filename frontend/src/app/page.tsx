@@ -4,9 +4,11 @@ export default function Home() {
   return (
     <div>
       <section className="intro">
-        <div className="max-w-[1200px] m-auto flex flex-wrap items-center h-screen">
-          <div className="intro-content-container">
-            <h1 className="text-9xl font-[700] tracking-tight">Lou Vang</h1>
+        <div className="max-w-[1200px] m-auto flex flex-wrap items-center homepage-minheight">
+          <div className="intro-content-container mb-8">
+            <h1 className="text-9xl font-[700] tracking-tight leading-none">
+              Lou Vang
+            </h1>
             <div className="intro-content text-7xl">
               <div>
                 Front-end{' '}

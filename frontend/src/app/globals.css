@@ -214,6 +214,10 @@ body {
   min-height: calc(100vh - 98px - 108.5px);
 }
 
+.homepage-minheight {
+  min-height: calc(100vh - 98px);
+}
+
 .coming-soon__heading-row {
   display: flex;
   gap: 0.25rem;
