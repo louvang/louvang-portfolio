@@ -79,7 +79,7 @@ export default function Home() {
           </div>
           <div>
             <Link
-              href="hhttps://github.com/louvang"
+              href="https://github.com/louvang"
               target="_blank"
               className="get-in-touch__link"
             >
