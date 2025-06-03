@@ -34,13 +34,25 @@ body {
 .top-nav-item {
   border: 1px solid #e6e6e6;
   border-radius: 3rem;
-  padding: 0.475rem 1rem 0.5rem;
   font-weight: 700;
 }
 
 .top-nav-item:hover {
   border: 1px solid #000;
   transition: 0.25s;
+}
+
+.top-nav-item a {
+  display: block;
+  padding: 0.475rem 1rem 0.5rem;
+}
+
+.top-nav-item__active {
+  background-color: #000;
+}
+
+.top-nav-item__active a {
+  color: #fff;
 }
 
 .layout-footer {

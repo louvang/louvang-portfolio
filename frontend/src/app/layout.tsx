@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import './globals.css';
+import TopNav from '@/components/TopNav';
 
 export const metadata: Metadata = {
   title: 'Lou Vang | Portfolio',
@@ -20,22 +21,11 @@ export default function RootLayout({
       <body className={`antialiased`}>
         <header className="layout-header w-full px-20">
           <div className="py-7 flex justify-between items-center border-b">
-            <div className="logo font-serif text-4xl">Lou Vang</div>
+            <Link href="/" className="logo font-serif text-4xl">
+              Lou Vang
+            </Link>
             <nav className="top-nav">
-              <ul className="font-mono lowercase list-none flex justify-between w-[400px]">
-                <li className="top-nav-item">
-                  <Link href="/work">Work</Link>
-                </li>
-                <li className="top-nav-item">
-                  <Link href="/blog">Blog</Link>
-                </li>
-                <li className="top-nav-item">
-                  <Link href="/about">About</Link>
-                </li>
-                <li className="top-nav-item">
-                  <Link href="/contact">Contact</Link>
-                </li>
-              </ul>
+              <TopNav />
             </nav>
           </div>
         </header>
