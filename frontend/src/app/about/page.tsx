@@ -6,16 +6,12 @@ export default function About() {
       <div className="about about-container">
         <div className="about__left-col">
           <img src="images/portrait.jpg" alt="Lou Vang" className="portrait" />
-          <br />
-          <div className="text-center text-xl">
-            <strong>Lou Vang</strong>
-            <br />
-            She/Her
-          </div>
         </div>
 
         <div className="about__right-col">
-          <h1>Lou Vang</h1>
+          <h1>
+            Lou Vang <span className="pronouns">(she/her)</span>
+          </h1>
           <div className="pronunciation">(rhymes with "you rang?")</div>
 
           <div className="about__lead">

@@ -77,6 +77,10 @@ body {
   font-size: 5.75rem;
 }
 
+.intro-content--mobile {
+  display: none;
+}
+
 .btn-fx {
   display: inline;
   padding: 0px 2rem;
@@ -247,6 +251,11 @@ body {
   gap: 3rem;
 }
 
+.pronouns {
+  font-weight: 300;
+  font-size: 3rem;
+}
+
 .about__left-col {
   width: calc(300px - 3rem);
 }
@@ -269,12 +278,14 @@ body {
 .about .pronunciation {
   font-size: 2.75rem;
   margin-bottom: 1.5rem;
+  display: none;
 }
 
 .about__lead {
   font-size: 4rem;
   line-height: 100%;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .about p {
@@ -552,6 +563,107 @@ body {
   }
 }
 
+@media only screen and (max-width: 1280px) {
+  .intro-h1 {
+    font-size: 6rem;
+    margin-bottom: -0.125rem;
+  }
+
+  .intro-content {
+    font-size: 4rem;
+  }
+
+  .btn-fx__mono {
+    font-size: 52px;
+  }
+
+  .btn-fx__mono-text {
+    font-size: 65px;
+    top: 0;
+  }
+
+  .btn-fx__mono-icon {
+    height: 65px;
+  }
+
+  .btn-fx__serif {
+    font-size: 60px;
+  }
+
+  .btn-fx__serif-text {
+    font-size: 60px;
+    line-height: 100%;
+    top: -3px;
+  }
+
+  .btn-fx__serif-icon {
+    height: 54px;
+    padding-bottom: 9px;
+  }
+
+  .btn-fx {
+    padding: -50px 2rem 0;
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  .intro-h1 {
+    font-size: 5rem;
+    margin-bottom: -0.125rem;
+  }
+
+  .intro-content {
+    font-size: 3rem;
+  }
+
+  .btn-fx__mono {
+    font-size: 42px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .btn-fx__mono-text {
+    font-size: 55px;
+    top: 0;
+  }
+
+  .btn-fx__mono-icon {
+    height: 55px;
+  }
+
+  .btn-fx__serif {
+    font-size: 50px;
+  }
+
+  .btn-fx__serif-text {
+    font-size: 50px;
+    line-height: 100%;
+    top: -3px;
+  }
+
+  .btn-fx__serif-icon {
+    height: 44px;
+    padding-bottom: 9px;
+  }
+
+  .btn-fx {
+    padding: -60px 2rem 0;
+  }
+
+  .about h1 {
+    font-size: 4rem;
+  }
+
+  .about .pronunciation {
+    font-size: 2.5rem;
+  }
+
+  .about__lead {
+    font-size: 2rem;
+    line-height: 140%;
+  }
+}
+
 @media only screen and (max-width: 900px) {
   .portfolio-item {
     display: flex;
@@ -593,6 +705,50 @@ body {
   .preview-thumb-2 {
     display: block;
     max-width: 600px;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .about {
+    gap: 2.5rem;
+  }
+
+  .about-container {
+    flex-wrap: wrap;
+  }
+
+  .about__left-col {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .about__right-col {
+    width: 100%;
+  }
+
+  .about h1 {
+    margin-top: 0;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .intro-content-container {
+    padding: 2rem;
+  }
+
+  .intro-content--mobile {
+    display: flex;
+    font-size: 3rem;
+    line-height: 120%;
+  }
+
+  .intro-content--mobile a {
+    text-decoration: underline;
+  }
+
+  .intro-content--dt {
+    display: none;
   }
 }
 
