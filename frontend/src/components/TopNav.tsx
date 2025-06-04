@@ -8,7 +8,7 @@ export default function TopNav() {
   return (
     <>
       <nav className="top-nav">
-        <ul className="font-mono lowercase list-none flex justify-between w-[400px]">
+        <ul className="font-mono lowercase list-none flex justify-between w-[300px]">
           {[
             { href: '/work', label: 'Work' },
             // { href: '/blog', label: 'Blog' },
