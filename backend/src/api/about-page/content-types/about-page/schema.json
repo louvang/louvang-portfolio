@@ -11,7 +11,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "ProfileImage": {
+    "profileImage": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
@@ -21,10 +21,10 @@
         "audios"
       ]
     },
-    "Name": {
+    "name": {
       "type": "string"
     },
-    "Pronouns": {
+    "pronouns": {
       "type": "enumeration",
       "enum": [
         "she/her",
@@ -32,22 +32,22 @@
         "they/them"
       ]
     },
-    "SubHeading": {
+    "subHeading": {
       "type": "string"
     },
-    "Description": {
+    "desc": {
       "type": "blocks"
     },
-    "ContactURL": {
+    "contactURL": {
       "type": "string"
     },
-    "LinkedInURL": {
+    "linkedInURL": {
       "type": "string"
     },
-    "GitHubURL": {
+    "gitHubURL": {
       "type": "string"
     },
-    "CodepenURL": {
+    "codepenURL": {
       "type": "string"
     }
   }

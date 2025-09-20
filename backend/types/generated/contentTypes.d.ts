@@ -384,27 +384,27 @@ export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    CodepenURL: Schema.Attribute.String;
-    ContactURL: Schema.Attribute.String;
+    codepenURL: Schema.Attribute.String;
+    contactURL: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Description: Schema.Attribute.Blocks;
-    GitHubURL: Schema.Attribute.String;
-    LinkedInURL: Schema.Attribute.String;
+    desc: Schema.Attribute.Blocks;
+    gitHubURL: Schema.Attribute.String;
+    linkedInURL: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::about-page.about-page'
     > &
       Schema.Attribute.Private;
-    Name: Schema.Attribute.String;
-    ProfileImage: Schema.Attribute.Media<
+    name: Schema.Attribute.String;
+    profileImage: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
-    Pronouns: Schema.Attribute.Enumeration<['she/her', 'he/him', 'they/them']>;
+    pronouns: Schema.Attribute.Enumeration<['she/her', 'he/him', 'they/them']>;
     publishedAt: Schema.Attribute.DateTime;
-    SubHeading: Schema.Attribute.String;
+    subHeading: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
