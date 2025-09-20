@@ -1,6 +1,14 @@
 import Link from 'next/link';
+import { fetchAPI } from '@/lib/fetchAPI';
+import {
+  BlocksRenderer,
+  type BlocksContent,
+} from '@strapi/blocks-react-renderer';
 
-export default function About() {
+export default async function About() {
+  const aboutData = await fetchAPI('about-page');
+  const content: BlocksContent = aboutData.desc;
+
   return (
     <div className="page-minheight flex justify-center py-12 px-20">
       <div className="about about-container">
@@ -10,49 +18,24 @@ export default function About() {
 
         <div className="about__right-col">
           <h1>
-            Lou Vang <span className="pronouns">(she/her)</span>
+            {aboutData.name}
+            <span className="pronouns">({aboutData.pronouns})</span>
           </h1>
           <div className="pronunciation">(rhymes with "you rang?")</div>
 
-          <div className="about__lead">
-            Hi! I'm a front-end developer with UI design capabilities.
-          </div>
+          <div className="about__lead">{aboutData.subHeading}</div>
 
-          <p>
-            Based in the Twin Cities metro area, my work is primarily in
-            designing and developing web applications. I love bridging the gap
-            between design and development and seeing my designs come to life.
-          </p>
-
-          <p>
-            I'm a big believer in strong, functional design that utilizes proper
-            white space and visual hierarchy to guide users where they need to
-            be.
-          </p>
-
-          <p>
-            I started my journey with web development and design in 2006 and
-            went to school with the sole ambition to become a web designer.
-            Since then, I've been a front-end developer for e-commerce. I
-            eventually started my own business designing planners from 2014-2020
-            before transitioning back into web development.
-          </p>
-
-          <p>
-            During my freetime, I love diving into a variety of hobbies
-            including: writing stories, cross-stitching, dollhouses, and
-            coloring books.
-          </p>
+          <BlocksRenderer content={content} />
 
           <div className="about__info sm-nav__links">
             <div>
-              <Link href="/contact" className="sm-nav__contact-btn">
+              <Link href={aboutData.contactURL} className="sm-nav__contact-btn">
                 Contact me
               </Link>
             </div>
             <div>
               <Link
-                href="https://www.linkedin.com/in/louvang/"
+                href={aboutData.linkedInURL}
                 target="_blank"
                 className="sm-nav__link"
               >
@@ -65,7 +48,7 @@ export default function About() {
             </div>
             <div>
               <Link
-                href="https://github.com/louvang"
+                href={aboutData.gitHubURL}
                 target="_blank"
                 className="sm-nav__link"
               >
@@ -78,7 +61,7 @@ export default function About() {
             </div>
             <div>
               <Link
-                href="https://codepen.io/louvang"
+                href={aboutData.codepenURL}
                 target="_blank"
                 className="sm-nav__link"
               >

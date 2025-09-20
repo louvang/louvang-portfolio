@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@strapi/blocks-react-renderer": "^1.0.2",
     "keen-slider": "^6.8.6",
     "next": "15.5.3",
     "react": "19.1.1",
