@@ -1,7 +1,55 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
+import { useKeenSlider } from 'keen-slider/react';
+import 'keen-slider/keen-slider.min.css';
+import {
+  BlocksRenderer,
+  type BlocksContent,
+} from '@strapi/blocks-react-renderer';
+
+interface ImageFormat {
+  name: string;
+  hash: string;
+  ext: string;
+  mime: string;
+  path: string | null;
+  width: number;
+  height: number;
+  size: number;
+  sizeInBytes: number;
+  url: string;
+}
+
+interface Formats {
+  thumbnail?: ImageFormat;
+  small?: ImageFormat;
+  medium?: ImageFormat;
+  large?: ImageFormat;
+}
+
+interface StrapiFileData {
+  id: number;
+  documentId: string;
+  name: string;
+  alternativeText: string | null;
+  caption: string | null;
+  width: number;
+  height: number;
+  formats: Formats; // Add the formats property
+  hash: string;
+  ext: string;
+  mime: string;
+  size: number;
+  url: string;
+  previewUrl: string | null;
+  provider: string;
+  provider_metadata: any | null;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
 
 interface SingleWork {
   id: number;
@@ -9,7 +57,8 @@ interface SingleWork {
   title: string;
   subTitle1: string;
   subTitle2: string | null;
-  miniDisc: object[];
+  miniDesc: any;
+  mainImage: StrapiFileData[];
   pageURL: string;
   demoLink: string;
   createdAt: string;
@@ -18,7 +67,18 @@ interface SingleWork {
 }
 
 export default function PortfolioViewer({ works }: { works: SingleWork[] }) {
-  const [viewMode, setViewMode] = useState<'slider' | 'list'>('list');
+  const [viewMode, setViewMode] = useState<'slider' | 'list'>('slider');
+  const [currentSlide, setCurrentSlide] = React.useState(0);
+  const [loaded, setLoaded] = useState(false);
+  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
+    initial: 0,
+    slideChanged(slider) {
+      setCurrentSlide(slider.track.details.rel);
+    },
+    created() {
+      setLoaded(true);
+    },
+  });
 
   const renderedPortfolioListItems = works.map(
     (work: SingleWork, index: number) => {
@@ -68,9 +128,55 @@ export default function PortfolioViewer({ works }: { works: SingleWork[] }) {
 
   const renderedPortfolioSliderItems = works.map((work: SingleWork) => {
     return (
-      <div key={'slider-item-' + work.id}>
-        <div>Image here</div>
-        <div>{work.title}</div>
+      <div key={'slider-item-' + work.id} className="keen-slider__slide">
+        <div className="si-container">
+          <div className="si-left-col">
+            <img
+              src={work.mainImage[0].url}
+              alt=""
+              className="si-left-col__img"
+            />
+          </div>
+          <div className="si-right-col">
+            <div className="si-right-col__top">
+              <div className="si-right-col__title">{work.title}</div>
+              <div className="si-right-col__subtitle">{work.subTitle1}</div>
+            </div>
+
+            <div className="si-right-col__bot">
+              <div className="si-right-col__mini-desc">
+                <BlocksRenderer content={work.miniDesc} />
+              </div>
+              <div className="si-right-col__btns">
+                <div className="si-btns flex">
+                  <Link
+                    className="mini-btn mini-btn--dark-bg"
+                    href={work.pageURL}
+                  >
+                    Learn More
+                  </Link>
+                  {work.demoLink !== null ? (
+                    <Link
+                      className="mini-btn mini-btn--dark-bg"
+                      href={work.demoLink}
+                      target="_BLANK"
+                    >
+                      Live Demo
+                    </Link>
+                  ) : (
+                    <button
+                      className="mini-btn mini-btn--dark-bg"
+                      type="button"
+                      disabled
+                    >
+                      Live Demo
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   });
@@ -107,7 +213,7 @@ export default function PortfolioViewer({ works }: { works: SingleWork[] }) {
               className="portfolio-icon"
               alt=""
             />
-            <h1>Work Portfolio</h1>
+            <h1>My Work</h1>
           </div>
 
           {viewMode === 'list' ? (
@@ -115,12 +221,90 @@ export default function PortfolioViewer({ works }: { works: SingleWork[] }) {
               <ol>{renderedPortfolioListItems}</ol>
             </div>
           ) : (
-            <div className="portfolio-slider">
-              {renderedPortfolioSliderItems}
+            <div className="portfolio-slider pt-2">
+              <div className="navigation-wrapper">
+                <div ref={sliderRef} className="keen-slider">
+                  {renderedPortfolioSliderItems}
+                </div>
+                {loaded && instanceRef.current && (
+                  <>
+                    <Arrow
+                      left
+                      onClick={(e: any) =>
+                        e.stopPropagation() || instanceRef.current?.prev()
+                      }
+                      disabled={currentSlide === 0}
+                    />
+
+                    <Arrow
+                      onClick={(e: any) =>
+                        e.stopPropagation() || instanceRef.current?.next()
+                      }
+                      disabled={
+                        currentSlide ===
+                        instanceRef.current.track.details.slides.length - 1
+                      }
+                    />
+                  </>
+                )}
+              </div>
+              {loaded && instanceRef.current && (
+                <div className="dots">
+                  {[
+                    ...Array(
+                      instanceRef.current.track.details.slides.length
+                    ).keys(),
+                  ].map((idx) => {
+                    return (
+                      <button
+                        key={idx}
+                        onClick={() => {
+                          instanceRef.current?.moveToIdx(idx);
+                        }}
+                        className={
+                          'dot' + (currentSlide === idx ? ' active' : '')
+                        }
+                      ></button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           )}
         </div>
       </div>
+    </div>
+  );
+}
+
+function Arrow(props: {
+  disabled: boolean;
+  left?: boolean;
+  onClick: (e: any) => void;
+}) {
+  const disabled = props.disabled ? ' arrow--disabled' : '';
+  return (
+    <div
+      onClick={props.onClick}
+      className={`arrow ${
+        props.left ? 'arrow--left' : 'arrow--right'
+      } ${disabled}`}
+    >
+      {props.left && (
+        <img
+          src="images/icons/left-arrow.svg"
+          className="slider-arrows"
+          alt=""
+        />
+      )}
+
+      {!props.left && (
+        <img
+          src="images/icons/right-arrow.svg"
+          className="slider-arrows"
+          alt=""
+        />
+      )}
     </div>
   );
 }
