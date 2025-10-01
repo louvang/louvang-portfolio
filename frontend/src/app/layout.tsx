@@ -31,7 +31,7 @@ export default function RootLayout({
         </header>
         <main>{children}</main>
         <footer className="layout-footer w-full">
-          <div className="px-20 py-10 flex justify-between items-center text-lg">
+          <div className="footer-content-container px-20 py-10 text-lg">
             <div className="copyright-line">
               &copy; 2025 Lou Vang. All rights reserved.
             </div>

@@ -60,6 +60,12 @@ body {
   color: var(--color-light-text);
 }
 
+.footer-content-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .bottom-nav-item {
   text-decoration: underline;
 }
@@ -962,6 +968,19 @@ body {
   .si-right-col__subtitle {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
+  }
+
+  .footer-content-container {
+    flex-wrap: wrap;
+    padding: 2rem;
+  }
+
+  .copyright-line {
+    width: 100%;
+  }
+
+  .bottom-nav {
+    width: 100%;
   }
 }
 
