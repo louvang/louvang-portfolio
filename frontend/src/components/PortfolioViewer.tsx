@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
@@ -79,6 +79,19 @@ export default function PortfolioViewer({ works }: { works: SingleWork[] }) {
       setLoaded(true);
     },
   });
+
+  useEffect(() => {
+    // Check if localStorage has a portfolioViewMode
+    const preferredViewMode = localStorage.getItem('portfolioViewMode');
+    if (preferredViewMode == 'slider' || preferredViewMode == 'list') {
+      setViewMode(preferredViewMode);
+    }
+  });
+
+  const configureViewMode = (mode: 'slider' | 'list') => {
+    localStorage.setItem('portfolioViewMode', mode);
+    setViewMode(mode);
+  };
 
   const renderedPortfolioListItems = works.map(
     (work: SingleWork, index: number) => {
@@ -188,7 +201,7 @@ export default function PortfolioViewer({ works }: { works: SingleWork[] }) {
           type="button"
           id="slider-btn"
           className={`sm-btn ${viewMode == 'slider' ? 'sm-btn--active' : ''}`}
-          onClick={() => setViewMode('slider')}
+          onClick={() => configureViewMode('slider')}
         >
           <img src="/images/icons/slider.svg" className="sm-btn__icon" />
           <span>Slider View</span>
@@ -198,7 +211,7 @@ export default function PortfolioViewer({ works }: { works: SingleWork[] }) {
           type="button"
           id="list-btn"
           className={`sm-btn ${viewMode == 'list' ? 'sm-btn--active' : ''}`}
-          onClick={() => setViewMode('list')}
+          onClick={() => configureViewMode('list')}
         >
           <img src="/images/icons/list.svg" className="sm-btn__icon" />
           <span>List View</span>
