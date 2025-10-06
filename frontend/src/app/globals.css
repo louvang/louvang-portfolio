@@ -706,6 +706,66 @@ body {
   }
 }
 
+.contact-container {
+  width: 100%;
+  max-width: 960px;
+  margin: 4rem auto;
+}
+
+.contact-container h2 {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.contact-container p {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.contact-nav-links {
+  display: flex;
+  gap: 2rem;
+  font-size: 1.5rem;
+}
+
+.contact-nav-links img {
+  width: 32px;
+}
+
+/** Form Elements **/
+input,
+textarea {
+  background-color: #fff;
+  border: 0px;
+  border-bottom: 1px solid #000;
+  font-size: 1.5rem;
+  padding: 4px 10px;
+  width: 100%;
+}
+
+.field-row {
+  margin-bottom: 1.5rem;
+}
+
+.submit-btn {
+  background-color: #000;
+  padding: 1rem 2rem;
+  border-radius: 2.25rem;
+  color: #fff;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: var(--color-dark);
+}
+
+.submit-row {
+  margin-top: -4px;
+  margin-bottom: 1rem;
+}
+
 @media only screen and (max-width: 1280px) {
   .intro-h1 {
     font-size: 6rem;
