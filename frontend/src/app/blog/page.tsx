@@ -1,21 +1,23 @@
-export default function Blog() {
+import { fetchAPI } from '@/lib/fetchAPI';
+import PostsList from '@/components/PostsList';
+import CategorySidebar from '@/components/CategorySidebar';
+
+export default async function Blog() {
+  const postsData = await fetchAPI('posts?populate=*');
+  const categoriesData = await fetchAPI(
+    'categories?populate[posts][fields][0]=id&populate[posts][fields][1]=title&fields[0]=name&fields[1]=slug'
+  );
+  const tagsData = await fetchAPI('tags');
+
   return (
-    <div className="page-minheight flex justify-center items-center">
-      <div className="coming-soon">
-        <div className="coming-soon__heading-row">
-          <img
-            src="images/icons/gearbox.svg"
-            alt=""
-            className="coming-soon__gear-icon"
-          />
-          <div className="coming-soon__heading">Coming Soon</div>
+    <div className="page-minheight py-12 px-20">
+      <div className="category-container">
+        <div className="category-main">
+          <div className="category-title">Recently Published</div>
+          <PostsList posts={postsData} />
         </div>
 
-        <p className="coming-soon__p">
-          The blog is still currently in the works. Come back later to get
-          coding tips and tricks, case studies, a look into front-end
-          development trends.
-        </p>
+        <CategorySidebar categories={categoriesData} tags={tagsData} />
       </div>
     </div>
   );
