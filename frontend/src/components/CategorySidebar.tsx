@@ -29,7 +29,7 @@ export default function CategorySidebar({
     (category: Category, index: number) => {
       return (
         <li key={`category-${index + 1}`}>
-          <Link href={`block/category/${category.slug}`}>
+          <Link href={`blog/category/${category.slug}`}>
             {category.name} ({category.posts.length})
           </Link>
         </li>
