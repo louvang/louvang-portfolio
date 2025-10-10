@@ -777,7 +777,7 @@ textarea {
 }
 
 .category-title {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   border-bottom: 1px solid #aaa;
   padding-bottom: 1.25rem;
 }
@@ -848,12 +848,23 @@ textarea {
   transition: ease-in 0.25s;
 }
 
+.super-title {
+  text-transform: uppercase;
+  font-size: 0.875rem;
+}
+
+.no-posts-msg {
+  margin: 2rem 0;
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
 .category-sidebar {
   section {
     margin-bottom: 1.5rem;
   }
 
-  .cs-category-list {
+  .cs-list {
     font-size: 1.25rem;
 
     li {

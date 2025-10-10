@@ -87,7 +87,7 @@ export default function PostsList({ posts }: { posts: Post[] }) {
         <Link
           key={`tag-${index + 1}`}
           className="tag-list-item"
-          href={`blog/tag/${tag.slug}`}
+          href={`/blog/tag/${tag.slug}`}
         >
           {tag.name}
         </Link>
@@ -98,11 +98,13 @@ export default function PostsList({ posts }: { posts: Post[] }) {
       <div className="post-item" key={`post-item-${index + 1}`}>
         <div className="post-details">
           Posted {formatDate(post.publishedAt)} in{' '}
-          <Link href={`blog/category/${post.category.slug}`}>
+          <Link href={`/blog/category/${post.category.slug}`}>
             {post.category.name}
           </Link>
         </div>
-        <div className="post-title">{post.title}</div>
+        <div className="post-title">
+          <Link href={`/blog/post/${post.slug}`}>{post.title}</Link>
+        </div>
         <div className="post-tags">
           <div className="tag-label">Tags</div>
           <div className="tag-list">{renderedTagList}</div>
