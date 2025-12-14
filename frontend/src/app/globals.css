@@ -766,7 +766,8 @@ textarea {
   margin-bottom: 1rem;
 }
 
-.category-container {
+.category-container,
+.post-container {
   display: flex;
   gap: 3rem;
   justify-content: space-between;
@@ -782,7 +783,8 @@ textarea {
   padding-bottom: 1.25rem;
 }
 
-.category-main {
+.category-main,
+.post-main {
   width: calc(100% - 260px - 3rem);
 }
 
@@ -810,9 +812,13 @@ textarea {
 }
 
 .post-title {
-  font-size: 2rem;
+  font-size: 3rem;
   line-height: 120%;
   margin-bottom: 0.75rem;
+}
+
+.category-main .post-title {
+  font-size: 2rem;
 }
 
 .post-tags {
@@ -886,6 +892,20 @@ textarea {
   .tag-list {
     font-size: 0.75rem;
   }
+}
+
+.post-content p {
+  margin-bottom: 1.25rem;
+}
+
+.post-content h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.post-content h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
 }
 
 @media only screen and (max-width: 1280px) {
