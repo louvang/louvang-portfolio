@@ -44,7 +44,7 @@ export default function RootLayout({
                   <Link href="/blog">Blog</Link>
                 </li>
                 <li className="bottom-nav-item">
-                  <Link href="/rss">RSS</Link>
+                  <Link href="/about">About</Link>
                 </li>
                 <li className="bottom-nav-item">
                   <Link href="/contact">Contact</Link>

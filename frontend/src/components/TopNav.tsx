@@ -8,10 +8,10 @@ export default function TopNav() {
   return (
     <>
       <nav className="top-nav">
-        <ul className="font-mono lowercase list-none flex justify-between w-[300px]">
+        <ul className="font-mono list-none flex justify-between w-[300px]">
           {[
             { href: '/work', label: 'Work' },
-            // { href: '/blog', label: 'Blog' },
+            { href: '/blog', label: 'Blog' },
             { href: '/about', label: 'About' },
             { href: '/contact', label: 'Contact' },
           ].map(({ href, label }, index) => (
