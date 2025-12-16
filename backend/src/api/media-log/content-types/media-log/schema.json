@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "media_logs",
+  "info": {
+    "singularName": "media-log",
+    "pluralName": "media-logs",
+    "displayName": "MediaLog"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "date": {
+      "type": "date"
+    },
+    "title": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "mediaType": {
+      "type": "enumeration",
+      "enum": [
+        "Book",
+        "Film",
+        "TV",
+        "Podcast",
+        "Video Game",
+        "Other"
+      ]
+    },
+    "rating": {
+      "type": "integer"
+    },
+    "review": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

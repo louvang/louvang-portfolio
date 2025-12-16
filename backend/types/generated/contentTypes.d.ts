@@ -499,6 +499,42 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiMediaLogMediaLog extends Struct.CollectionTypeSchema {
+  collectionName: 'media_logs';
+  info: {
+    displayName: 'MediaLog';
+    pluralName: 'media-logs';
+    singularName: 'media-log';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::media-log.media-log'
+    > &
+      Schema.Attribute.Private;
+    mediaType: Schema.Attribute.Enumeration<
+      ['Book', 'Film', 'TV', 'Podcast', 'Video Game', 'Other']
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    rating: Schema.Attribute.Integer;
+    review: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String;
+  };
+}
+
 export interface ApiPostPost extends Struct.CollectionTypeSchema {
   collectionName: 'posts';
   info: {
@@ -1106,6 +1142,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::about-page.about-page': ApiAboutPageAboutPage;
       'api::category.category': ApiCategoryCategory;
+      'api::media-log.media-log': ApiMediaLogMediaLog;
       'api::post.post': ApiPostPost;
       'api::tag.tag': ApiTagTag;
       'api::work.work': ApiWorkWork;
